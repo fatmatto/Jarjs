@@ -1,0 +1,24 @@
+{
+  "name": "jarjs",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Mattia Alfieri <mattialfieri@gmail.com>",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fatmatto/Jarjs"
+  },
+  "bugs": {
+    "url": "https://github.com/fatmatto/Jarjs/issues"
+  },
+  "keywords": [
+    "javascript",
+    "database",
+    "inmemory",
+    "nodejs"
+  ],
+  "dependencies": {
+    "highland": "^2.2.0"
+  },
+  "devDependencies": {}
+}
