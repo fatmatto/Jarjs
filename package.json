@@ -1,7 +1,7 @@
 {
   "name": "jarjs",
   "version": "0.0.1",
-  "description": "",
+  "description": "A minimalistic Javascript in-memory database",
   "author": "Mattia Alfieri <mattialfieri@gmail.com>",
   "main": "index.js",
   "repository": {
@@ -20,5 +20,12 @@
   "dependencies": {
     "highland": "^2.2.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jasmine-node tests"
+  },
+  "license": "GPLv2"
 }
