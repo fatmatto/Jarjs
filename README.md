@@ -1,7 +1,7 @@
 # Jarjs
 A minimalistic Javascript in-memory database
 ## Status
-  **Warning! JarJS is under development! the API is not yet finished! use this as preview only, not for production puprpose. **
+  **Warning!** JarJS is under development! the API is not yet finished! use this as preview only, not for production puprpose.
 ## Install
 
 ```
