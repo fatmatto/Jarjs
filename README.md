@@ -1,3 +1,4 @@
+![Jarjs Logo](https://camo.githubusercontent.com/434818ccd1140bdb42053c8584d39e8ce81e1cf6/687474703a2f2f6935382e74696e797069632e636f6d2f323831767166612e6a7067)
 # Jarjs
 A minimalistic Javascript in-memory database
 ## Status
