@@ -24,5 +24,5 @@ db.collection('users').insert({
      email : 'john@mail.com'
 })
 //Query the database
-db.collection('users').findOne({emaik : 'john@mail.com'});
+db.collection('users').findOne({email : 'john@mail.com'});
 ```
