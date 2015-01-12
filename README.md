@@ -13,7 +13,7 @@ npm install jarjs
 
 ```javascript
 var Jar = require('jarjs');
-var db = new Jar('myDatabase');
+var db = new Jar({name : 'myDatabase'});
 
 //create a new collection
 db.createCollection('users');
