@@ -1,10 +1,13 @@
 var Jar = require('../index.js');
 
 
-var j = new Jar('apio');
+var j = new Jar({
+  name :'apio'
+  });
 
 
 j.createCollection('Objects');
+
 j.collection('Objects').insert({
   'objectId' : '1',
   'protocol' : 'z',
@@ -55,5 +58,6 @@ describe("Insert and find", function () {
     });
     expect(result.length).toBe(2);
   })
+
 
 });
