@@ -17,11 +17,19 @@
   }
 
   var applyUpdateToDoc = function(update) {
-
-    return function(doc){
-      for (var k in update)
-        doc[k] = update[k];
+    var patchThis = function(object,patch) {
+      for (var j in patch){
+        if ('object' == typeof patch[j])
+          patchThis(object[j],patch[j]);
+        else
+          object[j] = patch[j];
+        }
     }
+    var fn = function(doc){
+      patchThis(doc,update)
+
+    }
+    return fn;
 
   }
 
@@ -42,6 +50,7 @@
   * name String The database name
   * filename String The database file path
   */
+
   function Jar(config) {
     if (!config.hasOwnProperty('name'))
       throw new Error('Database name is required in constructor Jar(config)');
@@ -55,6 +64,9 @@
     this.collections = {};
     /*
         These are coming soon features
+        -> Persistance
+        -> REST api
+        -> TCP socket
         if (this.hasOwnProperty('filename') && fs.existsSync(this.filename))
           this.loadFromDisk();
 
@@ -77,12 +89,13 @@
   *
   **/
   Collection.prototype.insert = function(document) {
+    //type checking
     if ('object' !== typeof document)
       throw new Error("Wrong type Error : document must be Object");
     debug('inserting an object: \n '+JSON.stringify(document));
     this.documents.push(document);
     debug('The collection '+this.name+" has "+this.documents.length+" documents;");
-    return _(this.documents);
+    return this;
   }
 
   /**
@@ -111,7 +124,7 @@
       .each(applyUpdateToDoc(update))
     }
 
-    return _(this.documents);
+    return this;
 
 
 
@@ -129,12 +142,14 @@
     .toArray(function(x){
       _r = x;
     });
-    return _r;
+
+      return _r;
   }
 
   /**
   * Same as find but returns the stream of data
-  */
+  **/
+  /**/
   Collection.prototype.findStream = function (query) {
     if ('object' !== typeof query)
       throw new Error("Wrong type Error : query must be Object");

@@ -3,6 +3,12 @@
 A minimalistic Javascript in-memory database
 ## Status
   **Warning!** JarJS is under development! the API is not yet finished! use this as preview only, not for production puprpose.
+
+## Roadmap
+* Persistance
+* Standalone server
+
+
 ## Install
 
 ```
@@ -19,10 +25,19 @@ var db = new Jar({name : 'myDatabase'});
 db.createCollection('users');
 
 //add a document to the collection
-db.collection('users').insert({
-     username : 'John',
-     email : 'john@mail.com'
-})
+db
+.collection('users')
+.insert({
+     name : 'John',
+     email : 'john@mail.com',
+     data : {
+       skills : ['javascript','nodejs'],
+       salary : 3000
+     }
+});
+//Update a document
+db.collection('users').update({email : 'john@mail.com'},{data : {salary : 4000}})
+
 //Query the database
 db.collection('users').findOne({email : 'john@mail.com'});
 ```
