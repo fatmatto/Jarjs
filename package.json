@@ -1,6 +1,6 @@
 {
   "name": "jarjs",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A minimalistic Javascript in-memory database that runs in nodejs",
   "author": "Mattia Alfieri <mattialfieri@gmail.com>",
   "main": "index.js",
