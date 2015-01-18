@@ -60,7 +60,7 @@
       this[k] = config[k];
 
 
-
+    this._data = {};
     this.collections = {};
     /*
         These are coming soon features
@@ -231,6 +231,47 @@
       throw new Error('This Jar has not a collection named '+collection_name);
 
     return this.collections[collection_name];
+  }
+
+  Jar.prototype.set = function(k,v) {
+    this._data[k] = v;
+    return this;
+  }
+
+  Jar.prototype.get = function(k) {
+    return this._data[k];
+  }
+  Jar.prototype.flushall = function() {
+    delete this._data;
+    this._data = {};
+  }
+  Jar.prototype.unset = function(key) {
+    if (!this._data.hasOwnProperty(key))
+      throw new Error('Non existing key error : the key '+key+' does not exist');
+    delete this._data[key];
+  }
+  Jar.prototype.list = function(key) {
+    //REMEMEBER this is overwriting the previus value
+    this._data[key] = [];
+    return this;
+  }
+  Jar.prototype.lpush = function(key,item) {
+    if (!this._data.hasOwnProperty(key))
+      throw new Error('Non existing key error : the key '+key+' does not exist');
+    if (!(this._data[key] instanceof Array) )
+      throw new Error('Wrong type error : the key '+key+' is not associated to a list');
+    //TODO add multiple parameters
+    this._data[key].unshift(item);
+    return this;
+  }
+  Jar.prototype.rpush = function(key,item) {
+    //TODO add multiple parameters
+    if (!this._data.hasOwnProperty(key))
+      throw new Error('Non existing key error : the key '+key+' does not exist');
+    if (!(this._data[key] instanceof Array) )
+      throw new Error('Wrong type error : the key '+key+' is not associated to a list');
+    this._data[key].push(item);
+    return this;
   }
 
   /*

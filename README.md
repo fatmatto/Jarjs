@@ -7,6 +7,7 @@ A minimalistic Javascript in-memory database
 ## Roadmap
 * Persistance
 * Standalone server
+* Key-Value capabilities
 
 
 ## Install
@@ -21,10 +22,12 @@ npm install jarjs
 var Jar = require('jarjs');
 var db = new Jar({name : 'myDatabase'});
 
-//create a new collection
+/* OPERATIONS ON DOCUMENTS */
+
+//Creates a new collection
 db.createCollection('users');
 
-//add a document to the collection
+//Adds a document to the collection
 db
 .collection('users')
 .insert({
@@ -35,9 +38,38 @@ db
        salary : 3000
      }
 });
-//Update a document
+//Updates a document
 db.collection('users').update({email : 'john@mail.com'},{data : {salary : 4000}})
 
 //Query the database
 db.collection('users').findOne({email : 'john@mail.com'});
+
+/* OPERATION ON VALUES */
+
+//Creates a new key value pair
+db.set('myKey','myValue');
+
+//Returns 'myValue'
+db.get('myKey');
+
+//Returns undefined
+db.get('wrongKey');
+
+//Deletes the myKey pair
+db.unset('myKey');
+
+/* OPERATIONS ON LISTS */
+
+//Creates an empty list with 'myList' key
+db.list('myList');
+
+//pushes an element on the left of the list
+db.lpush('myList','LEFT');
+
+//pushes an element on the right of the list
+db.rpush('myLyst','RIGHT');
+
+//deletes every key
+db.flushall();
+
 ```
